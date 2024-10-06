@@ -1,11 +1,7 @@
 "use client";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { GoArrowRight } from "react-icons/go";
 import { FaSearch } from "react-icons/fa";
-import Link from "next/link";
 import BlogsCard from "@/components/BlogsCard";
 import Banner from "@/components/share/banner";
 

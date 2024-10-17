@@ -52,7 +52,6 @@ export default function BooksCard({ book }) {
         },
         { email: session?.user?.email } // Pass email in the request body
       );
-      console.log(response);
 
       if (response.status === 201) {
         setIsBookmarked(true);

@@ -19,12 +19,12 @@ export default function BlogsCard() {
         <h2 className="text-2xl font-bold mb-4">{title}</h2>
         <p className="text-gray-600">{shortDescription}</p>
         <hr className="mt-5 mb-1 border-t-1 border-gray-300" />
-        <sapn className="flex justify-between">
-          <sapn className="uppercase">
+        <span className="flex justify-between">
+          <span className="uppercase">
             In <span className="text-rose-600">{category}</span>
-          </sapn>
-          <sapn className="font-semibold">Read More</sapn>
-        </sapn>
+          </span>
+          <span className="font-semibold">Read More</span>
+        </span>
       </div>
     </>
   );

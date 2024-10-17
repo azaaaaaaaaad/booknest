@@ -25,8 +25,6 @@ const SubscriptionPage = () => {
       body: JSON.stringify({ email, plan }), // Include email in the request body
     });
 
-    console.log("API Response:", response); // Log the raw response for debugging
-
     // Check if the response is OK
     if (!response.ok) {
       alert("Failed to create checkout session. Please try again later.");
@@ -34,7 +32,6 @@ const SubscriptionPage = () => {
     }
 
     const data = await response.json();
-    console.log("Parsed Data:", data); // Log the parsed data
 
     if (data.url) {
       // Redirect to the Stripe checkout URL

@@ -12,7 +12,7 @@ const Banner = ({ title, linkName }) => {
           <Link href="/">{linkName}</Link>
 
           <GoArrowRight className="" />
-          <sapn className="text-orange-600">{title}</sapn>
+          <span className="text-orange-600">{title}</span>
         </h3>
       </div>
     </>

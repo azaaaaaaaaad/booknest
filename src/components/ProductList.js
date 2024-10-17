@@ -4,14 +4,12 @@ const getProducts = async () => {
       cache: "no-store",
     });
 
-    console.log("Response Status:", res.status); // Log the response status
-
     if (!res.ok) {
       throw new Error("Failed to fetch books");
     }
 
     const data = await res.json();
-    console.log("API Data:", JSON.stringify(data, null, 2)); // Log the entire data structure
+
     return Array.isArray(data) ? data : []; // Return books directly if it's an array
   } catch (error) {
     console.error("Error loading books:", error.message); // Log the error message
@@ -21,8 +19,6 @@ const getProducts = async () => {
 
 export default async function ProductsList() {
   const books = await getProducts();
-  console.log("books Array Length:", books.length); // Check if books array is populated
-  console.log("books List:", books); // Check the books list
 
   if (books.length === 0) {
     return <div>No books found or failed to load books.</div>; // Show a message if no books

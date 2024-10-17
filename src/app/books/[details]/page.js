@@ -21,7 +21,6 @@ export default async function BookDetails({ params }) {
 
   try {
     const response = await axios.get(`${baseUrl}/api/books`);
-    // console.log("API Response:", response.data);
     listOfBooks = response.data;
   } catch (error) {
     console.error("Error fetching book details:", error.message);
@@ -31,8 +30,6 @@ export default async function BookDetails({ params }) {
   }
 
   const bookId = params.details; // No conversion
-  console.log("Params:", params);
-  // console.log("List of Books:", listOfBooks);
 
   const bookDetails = listOfBooks.find((book) => book._id === bookId); // Ensure the correct property is used
 

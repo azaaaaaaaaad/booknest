@@ -32,7 +32,7 @@ export async function POST(request) {
       cancel_url: `${request.headers.get("origin")}/cancel`,
     });
 
-    console.log("Stripe session created:", session);
+    // console.log("Stripe session created:", session);
 
     // Connect to the database
     const db = await connectDB(); // Make sure to await the DB connection
@@ -48,7 +48,7 @@ export async function POST(request) {
       if (userUpdateResult.matchedCount === 0) {
         console.warn("No user found with the specified email.");
       } else {
-        console.log("User subscription updated to Pro");
+        // console.log("User subscription updated to Pro");
       }
     }
 
@@ -56,7 +56,7 @@ export async function POST(request) {
     const user = await Users.findOne({ email });
 
     // Log the user data for verification
-    console.log("User retrieved:", user);
+    // console.log("User retrieved:", user);
 
     // Return the session URL and the user's subscription status
     return NextResponse.json({

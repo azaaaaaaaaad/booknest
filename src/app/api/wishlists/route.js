@@ -7,7 +7,6 @@ export async function POST(req) {
 
   try {
     const body = await req.json(); // Parse the request body
-    console.log(body);
     // Ensure email exists in the body
     if (!body.email) {
       return new Response(
@@ -18,7 +17,6 @@ export async function POST(req) {
 
     // Create a new cart item including the email field
     const wishListItem = await WishList.create(body); // The email field will be saved automatically
-    console.log(wishListItem);
     return new Response(JSON.stringify({ success: true, data: wishListItem }), {
       status: 201,
     });

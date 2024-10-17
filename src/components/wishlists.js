@@ -5,30 +5,30 @@ import { useEffect, useState } from "react";
 import Loading from "../app/loading";
 import Image from "next/image";
 
-export default function Cart() {
+export default function Wishlist() {
   const { data: session } = useSession();
-  const [carts, setCarts] = useState([]);
+  const [wishlists, setWishlists] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/api/carts/${session?.user?.email}`, {
+        const res = await axios.get(`/api/wishlists/${session?.user?.email}`, {
           cache: "no-store",
         });
 
         if (res.status === 200) {
           // In Axios, the response data is already parsed as JSON
           const data = res.data;
-          setCarts(data);
+          setWishlists(data);
         } else {
-          console.error("Failed to fetch carts: ", res.status);
-          setCarts([]);
+          console.error("Failed to fetch wishlists: ", res.status);
+          setWishlists([]);
         }
 
         setIsLoading(false);
       } catch (error) {
-        console.error("Error loading carts:", error.message); // Log the error message
-        setCarts([]); // Set carts to empty array in case of error
+        console.error("Error loading wishlists:", error.message); // Log the error message
+        setWishlists([]); // Set wishlists to empty array in case of error
         setIsLoading(false); // Ensure loading state is set to false even in case of error
       }
     };
@@ -36,12 +36,11 @@ export default function Cart() {
     fetchData();
   }, [session?.user?.email]);
 
-  console.log(carts);
-  if (isLoading && carts.length === 0) {
+  if (isLoading && wishlists.length === 0) {
     return <Loading />; // Use your existing loading component
   }
 
-  if (carts.length === 0) {
+  if (wishlists.length === 0) {
     return <div>No cart found or failed to load cart.</div>;
   }
   return (
@@ -70,8 +69,8 @@ export default function Cart() {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200 whitespace-nowrap">
-          {Array.isArray(carts) &&
-            carts.map((cart) => {
+          {Array.isArray(wishlists) &&
+            wishlists.map((cart) => {
               return (
                 <tr key={cart._id}>
                   <td className="px-4 py-4 text-sm text-gray-800">

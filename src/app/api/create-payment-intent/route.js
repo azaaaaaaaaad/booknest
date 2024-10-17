@@ -9,14 +9,11 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 });
 
 export async function POST(req) {
-  console.log("Hit payment intent route");
-
   try {
     await connectDB();
 
     // Parse the request body
     const data = await req.json();
-    console.log("Request Data:", data); // Log the incoming data
 
     const { books, email, name } = data; // Destructure after logging
 

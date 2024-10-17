@@ -40,8 +40,6 @@ export default function Register() {
       redirect: false,
     });
 
-    console.log(resp);
-
     if (res?.status === 200 && resp?.status === 200) {
       reset();
       Swal.fire({

@@ -8,8 +8,6 @@ const getBlogs = async () => {
       cache: "no-store",
     });
 
-    console.log("Response Status:", res.status); // Log the response status
-
     if (!res.ok) {
       throw new Error("Failed to fetch blogs");
     }

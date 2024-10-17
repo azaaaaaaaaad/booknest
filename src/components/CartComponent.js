@@ -73,7 +73,7 @@ export default function CartComponent({ cartBook, setCartBook }) {
   const total = subtotal + tax;
 
   const handleCouponApply = () => {
-    if (cartBook.cart.length > 0 && couponInput === "BookNest10") {
+    if (cartBook.length > 0 && couponInput === "BookNest10") {
       const discountAmount = (total * 10) / 100;
       setDiscount(discountAmount);
       setIsDiscountSectionHidden(true);
@@ -82,7 +82,7 @@ export default function CartComponent({ cartBook, setCartBook }) {
         text: `You have received a discount of $${discountAmount.toFixed(2)}.`,
         icon: "success",
       });
-    } else if (cartBook.cart.length > 3 && couponInput === "BookNest20") {
+    } else if (cartBook.length > 3 && couponInput === "BookNest20") {
       const discountAmount = (total * 20) / 100;
       setDiscount(discountAmount);
       setIsDiscountSectionHidden(true);
@@ -93,7 +93,7 @@ export default function CartComponent({ cartBook, setCartBook }) {
       });
     } else {
       let errorMessage = "The coupon code you entered is not valid.";
-      if (cartBook.cart.length < 1) {
+      if (cartBook.length < 1) {
         errorMessage = "Please select a book to apply the coupon.";
       } else if (cartBook.length < 3 && couponInput === "BookNest20") {
         errorMessage = "Please select more than 3 books to apply the coupon.";
@@ -149,7 +149,7 @@ export default function CartComponent({ cartBook, setCartBook }) {
     }
 
     try {
-      const booksArray = cartBook.cart.map((item) => ({
+      const booksArray = cartBook.map((item) => ({
         bookId: item._id,
         bookName: item.name,
         price: item.price,

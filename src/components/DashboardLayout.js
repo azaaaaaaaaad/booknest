@@ -139,7 +139,7 @@
 //         </Link>
 //         <HiMenuAlt3 className="text-3xl" />
 //       </button>
-      
+
 //       {/* Sidebar */}
 //       <nav
 //         className={`text-black bg-white w-full lg:w-80 lg:min-h-min py-6 font-[sans-serif] overflow-auto fixed z-10 transition-transform duration-300 transform shadow-xl mt-[70px] ${
@@ -222,20 +222,6 @@
 // };
 
 // export default DashboardLayout;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //............................Main Code...............................
 
@@ -427,7 +413,7 @@ const DashboardLayout = ({ children }) => {
       {
         name: "Profile",
         icon: <AiOutlineUser className="text-xl" />,
-        href: "/dashboard/analytics",
+        href: "/dashboard/userProfile",
       },
       {
         name: "Analytics",
@@ -489,7 +475,7 @@ const DashboardLayout = ({ children }) => {
             <Image
               height={200}
               width={200}
-              src={session?.user.image || "https://i.ibb.co/XWyS1WL/d.jpg"} // Default profile image
+              src={session?.user?.image || "https://i.ibb.co/XWyS1WL/d.jpg"} // Default profile image
               className="w-12 h-12 rounded-full border-2 border-white"
               alt="Profile"
             />

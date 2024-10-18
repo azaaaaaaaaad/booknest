@@ -69,64 +69,63 @@
 // // Export both models
 // export { Book, Blog, WishList, Cart, Payment };
 
-
 import mongoose, { Schema } from "mongoose";
 
 const BookSchema = new mongoose.Schema({
-  name: { type: String},
+  name: { type: String },
   description: { type: String },
-  image: { type: String},
-  price: { type: Number, },
-  ratings: { type: Number, },
-  author: { type: String, },
-  category: { type: String, },
-  cardCount: { type: Number, },
+  image: { type: String },
+  price: { type: Number },
+  ratings: { type: Number },
+  author: { type: String },
+  category: { type: String },
+  cardCount: { type: Number },
 });
 
 const BlogSchema = new mongoose.Schema({
-  title: { type: String, },
-  author: { type: String, },
-  date: { type: String, },
-  category: { type: String, },
-  shortDescription: { type: String, },
-  content: { type: String, },
+  title: { type: String },
+  author: { type: String },
+  date: { type: String },
+  category: { type: String },
+  shortDescription: { type: String },
+  content: { type: String },
 });
 
 const WishlistSchema = new Schema({
-  name: { type: String, },
-  description: { type: String, },
-  image: { type: String, },
-  author: { type: String, },
-  price: { type: Number, },
-  rating: { type: Number, },
-  category: { type: String, },
-  email: { type: String, },
+  name: { type: String },
+  description: { type: String },
+  image: { type: String },
+  author: { type: String },
+  price: { type: Number },
+  rating: { type: Number },
+  category: { type: String },
+  email: { type: String },
 });
 
 const CartsSchema = new mongoose.Schema({
-  email: { type: String, },
-  bookId: { }, // Ensure bookId is defined
-  name: { type: String, },
-  description: { type: String, },
-  image: { type: String, },
-  author: { type: String, },
-  price: { type: Number, },
-  rating: { type: Number, },
-  category: { type: String, },
-  cardCount: { type: Number, },
-  cardCount: { type: Number},
+  email: { type: String },
+  bookId: {}, // Ensure bookId is defined
+  name: { type: String },
+  description: { type: String },
+  image: { type: String },
+  author: { type: String },
+  price: { type: Number },
+  rating: { type: Number },
+  category: { type: String },
+  cardCount: { type: Number },
+  cardCount: { type: Number },
 });
 
 const PaymentSchema = new mongoose.Schema({
-  email: { type: String, },
-  name: { type: String, },
-  price: { type: Number, },
-  transactionId: { type: String, },
+  email: { type: String },
+  name: { type: String },
+  price: { type: Number },
+  transactionId: { type: String },
   date: { type: Date, default: Date.now },
-  bookId: { },
-  bookName: { type: String, },
+  bookId: {},
+  bookName: { type: String },
   status: { type: String, default: "pending" },
-  cardCount: { type: Number, },
+  cardCount: { type: Number },
 });
 
 // Check if the model already exists to avoid overwriting it

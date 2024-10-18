@@ -17,13 +17,12 @@ export default function BooksCard({ book }) {
     _id,
     publishType,
     cardCount,
-    quantity
+    quantity,
   } = book;
 
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isInCart, setIsInCart] = useState(false);
   const { data: session } = useSession();
-
   const [stock, setStock] = useState(null);
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -58,16 +57,17 @@ export default function BooksCard({ book }) {
 
   useEffect(() => {
     if (!stock) {
-    const fetchTotalQuantity = async () => {
-      const response = await fetch(`${baseUrl}/api/payments-total-quantity?blogId=${_id}`)
-      const data = await response.json();
-      const status = (quantity - data) > 0 ? "Stock In" : "Stock Out"
-      setStock(status)
+      const fetchTotalQuantity = async () => {
+        const response = await fetch(
+          `${baseUrl}/api/payments-total-quantity?blogId=${_id}`
+        );
+        const data = await response.json();
+        const status = quantity - data > 0 ? "Stock In" : "Stock Out";
+        setStock(status);
+      };
+      fetchTotalQuantity();
     }
-    fetchTotalQuantity()
-  }
-
-}, [stock,baseUrl, _id, quantity]);
+  }, [stock, baseUrl, _id, quantity]);
 
   const addToBookmark = async () => {
     if (isBookmarked) {
@@ -107,20 +107,11 @@ export default function BooksCard({ book }) {
       console.error("Error adding to bookmark:", error);
       const message =
         error.response?.data?.message || "Failed to add to bookmarks!";
-
-      if (error.response?.status === 409) {
-        Swal.fire({
-          icon: "info",
-          title: "Already Bookmarked",
-          text: message,
-        });
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: message,
-        });
-      }
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: message,
+      });
     }
   };
 
@@ -169,12 +160,11 @@ export default function BooksCard({ book }) {
           title: "Already in Cart",
           text: message,
         });
-      }
-       else {
+      } else {
         Swal.fire({
-          icon: "info",
-          title: "Already in Cart",
-          text: `${name} is already in your cart!`,
+          icon: "error",
+          title: "Error",
+          text: message,
         });
       }
     }
@@ -191,7 +181,7 @@ export default function BooksCard({ book }) {
           objectFit="cover"
           className="rounded-2xl"
         />
-        {/* Bookmark Icon on the left side */}
+        {/* Bookmark and Cart Icons */}
         <div>
           <button
             onClick={addToBookmark}
@@ -241,7 +231,9 @@ export default function BooksCard({ book }) {
           <span>{publishType === "released" ? "" : "upcoming"}</span>
         </h2> */}
         <h2 className="flex gap-2">
-          <span className="text-base md:text-base text-gray-800 font-semibold line-clamp-2 hover:text-[#F65D4E] text-center uppercase">{publishType === "released" ? <>{stock}</> : "upcoming"}</span>
+          <span className="text-base md:text-base text-gray-800 font-semibold line-clamp-2 hover:text-[#F65D4E] text-center uppercase">
+            {publishType === "released" ? <>{stock}</> : "upcoming"}
+          </span>
         </h2>
       </div>
     </div>

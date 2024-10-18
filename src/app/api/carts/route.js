@@ -1,25 +1,17 @@
+// pages/api/carts/[email].js
 import connectToDatabase from "@/lib/mongodb";
-import { Cart } from "../../../../models/Book";
 import { NextResponse } from "next/server";
+import { Cart } from "../../../../models/Book";
 
-export async function POST(req) {
-  await connectToDatabase();
+export async function POST(req, { params }) {
+  await connectToDatabase(); // Connect to the database
+
+  const { email } = params; // Get email from params
+  const body = await req.json(); // Get request body
 
   try {
-    const body = await req.json();
-
-    if (!body.email) {
-      return new Response(
-        JSON.stringify({ success: false, message: "Email is required" }),
-        { status: 400 }
-      );
-    }
-
-    // Check if the book with the same _id and email already exists in the cart
-    const existingCartItem = await Cart.findOne({
-      email: body.email,
-      bookId: body._id, // Ensure you are passing the bookId
-    });
+    // Check for existing cart item
+    const existingCartItem = await Cart.findOne({ email, _id: body._id });
 
     // if (existingCartItem) {
     //   return new Response(
@@ -28,16 +20,19 @@ export async function POST(req) {
     //   );
     // }
 
-    // Create a new cart item using the existing book _id
-    const cartItem = await Cart.create(body);
-    return new Response(JSON.stringify({ success: true, data: cartItem }), {
-      status: 201,
-    });
+    // Create a new cart item
+    const cartItem = new Cart({ ...body, email });
+    await cartItem.save();
+
+    return NextResponse.json(
+      { success: true, data: cartItem },
+      { status: 201 }
+    );
   } catch (error) {
-    console.error("Error in POST request:", error);
-    return new Response(
-      JSON.stringify({ success: false, message: "Failed to add book to cart" }),
-      { status: 400 }
+    console.error("Error in adding to cart:", error);
+    return NextResponse.json(
+      { success: false, message: "Failed to add book to cart" },
+      { status: 500 }
     );
   }
 }

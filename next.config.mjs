@@ -4,6 +4,16 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  experimental: {
+    turbo: {
+      rules: {
+        "*.svg": {
+          loaders: ["@svgr/webpack"],
+          as: "*.js",
+        },
+      },
+    },
+  },
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
@@ -45,6 +55,7 @@ const nextConfig = {
       "i.ibb.co.com",
       "images.unsplash.com",
       "m.media-amazon.com",
+      "via.placeholder.com",
       "*",
     ],
   },

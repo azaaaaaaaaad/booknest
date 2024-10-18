@@ -31,7 +31,7 @@ export default async function SalesList() {
 
   return (
     <div className="font-sans lg:max-h-screen overflow-x-auto overflow-y-auto">
-      <table className="divide-y divide-gray-200 w-full">
+      <table className=" divide-y divide-gray-200">
         <thead className="bg-gray-100 whitespace-nowrap">
           <tr>
             <th className="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
@@ -52,25 +52,21 @@ export default async function SalesList() {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200 whitespace-nowrap">
-          {payments.map((payment) => (
-            <tr key={payment._id}>
-              <td className="px-4 py-4 text-sm text-gray-800">
-                {payment.name}
-              </td>
-              <td className="px-4 py-4 text-sm text-gray-800">
-                {payment.email}
-              </td>
-              <td className="px-4 py-4 text-sm text-gray-800">
-                {new Date(payment.date).toLocaleDateString()} {/* Format the date */}
-              </td>
-              <td className="px-4 py-4 text-sm text-gray-800">
-                {payment.transactionId}
-              </td>
-              <td className="px-4 py-4 text-sm text-gray-800">
-                {parseFloat(payment.totalAmount).toFixed(2)} $ {/* Total amount */}
-              </td>
-            </tr>
-          ))}
+          {Array.isArray(payments) &&
+            payments.map((pay) => (
+              <tr key={pay._id}>
+                <td className="px-4 py-4 text-sm text-gray-800">{pay?.name}</td>
+                <td className="px-4 py-4 text-sm text-gray-800">{pay.email}</td>
+                <td className="px-4 py-4 text-sm text-gray-800">
+                  {parseFloat(pay.price).toFixed(2)} $
+                </td>
+                <td className="px-4 py-4 text-sm text-gray-800">{pay.date}</td>
+
+                <td className="px-4 py-4 text-sm text-gray-800">
+                  {pay.transactionId}
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>

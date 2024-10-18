@@ -74,7 +74,7 @@ export default function Reviews() {
               </div>
               <p className="font-medium mb-3 md:my-10 px-10 md:px-10 text-sm md:text-base">
                 "I love the user-friendly website of BookNest. It makes finding
-                books easy, and their delivery service is always on time. Highly
+                books easy, and their delivery service is always on time.This site is highly
                 recommended!"
               </p>
               <h1 className="text-lg md:text-2xl font-medium text-center mb-10 md:mb-20">

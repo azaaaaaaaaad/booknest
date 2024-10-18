@@ -38,7 +38,7 @@ export default function Community() {
               />
               <button
                 type="button"
-                className="flex items-center justify-center bg-orange-500 px-5 text-sm sm:text-base font-semibold text-white"
+                className="flex items-center justify-center bg-orange-500 px-5 text-sm sm:text-base font-medium text-white"
                 onClick={handleSubscribe}
               >
                 Subscribe

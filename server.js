@@ -4,7 +4,7 @@ const { Server } = require("socket.io");
 // Create a new Socket.IO server
 const io = new Server(4000, {
   cors: {
-    origin: "http://localhost:3000", // Allow requests from the client-side app
+    origin: `${process.env.NEXT_PUBLIC_API_URL}`, // Allow requests from the client-side app
     methods: ["GET", "POST"], // Allowed methods
   },
   path: "/api/chat", // Ensure this matches the client-side configuration

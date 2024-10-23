@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import { io } from "socket.io-client";
 
 // Set up the Socket.IO connection
-const socket = io("http://localhost:4000", {
+const socket = io(`${process.env.NEXT_PUBLIC_SERVER_URL}`, {
   path: "/api/chat", // Make sure this matches the server-side configuration
   transports: ["websocket"], // Use websocket transport
 });

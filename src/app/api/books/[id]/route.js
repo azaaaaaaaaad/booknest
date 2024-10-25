@@ -57,11 +57,13 @@ export async function DELETE(request, { params }) {
   const { id } = params;
   db = await connectDB();
 
+
   // Delete the book from the database
   const result = await db
     .collection("books")
     .deleteOne({ _id: new ObjectId(id) }); // Convert id to ObjectId
 
+console.log("didarul-----------",result);
   if (result.deletedCount === 0) {
     return NextResponse.json({ message: "Book not found" }, { status: 404 });
   }

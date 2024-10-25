@@ -31,7 +31,7 @@ export async function GET(req) {
     payments.forEach((order) => {
       order.books.forEach((book) => {
         if (book.bookId === bookId) {
-          totalQuantity += book.cardCount;
+          totalQuantity += book.quantity;
         }
       });
     });

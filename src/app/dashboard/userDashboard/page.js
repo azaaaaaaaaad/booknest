@@ -4,6 +4,7 @@ import BookCount from "@/components/mainDashBoard/BooKCountPrice";
 import Head from "next/head";
 import SaleCount from "@/components/mainDashBoard/SaleCount";
 import BlogCount from "@/components/mainDashBoard/BlogCount";
+import RecentPayments from "@/components/mainDashBoard/RecentPayments";
 
 const UserDashboard = () => {
   return (
@@ -19,6 +20,8 @@ const UserDashboard = () => {
           <BlogCount className=" col-span-1" />
         </div>
         {/* Add more specific content here */}
+
+        <RecentPayments />
       </DashboardLayout>
     </>
   );

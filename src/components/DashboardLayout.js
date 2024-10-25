@@ -104,15 +104,10 @@ const DashboardLayout = ({ children }) => {
         href: "/dashboard/userProfile",
       },
       {
-        name: "Analytics",
-        icon: <IoBookSharp className="text-xl" />,
-        href: "/dashboard/analytics",
-      },
-      {
-        name: "Cart",
+        name: "Payment History",
         icon: <AiOutlineFileText className="text-xl" />,
-        href: "/dashboard/cart",
-      },
+        href: "/dashboard/paymentHistory",
+      }, // Corrected URL
       {
         name: "Wishlist",
         icon: <AiOutlineLineChart className="text-xl" />,
@@ -170,14 +165,14 @@ const DashboardLayout = ({ children }) => {
           <Image
             height={200}
             width={200}
-            src={session?.user.image || "https://i.ibb.co/XWyS1WL/d.jpg"}
+            src={session?.user?.image || "https://i.ibb.co/XWyS1WL/d.jpg"}
             className="w-12 h-12 rounded-full border-2 border-white"
             alt="Profile"
           />
           <div className="mt-2 text-center">
-            <p className="text-sm mt-2">{session?.user.name || "User Name"}</p>
+            <p className="text-sm mt-2">{session?.user?.name || "User Name"}</p>
             <p className="text-xs mt-0.5">
-              {session?.user.email || "User Email"}
+              {session?.user?.email || "User Email"}
             </p>
           </div>
         </div>
@@ -229,7 +224,7 @@ const DashboardLayout = ({ children }) => {
         className={`flex-grow transition-all duration-300 overflow-y-auto lg:overflow-hidden`} // Make main content scrollable
       >
         <DashboardNavbar />
-        <div className="lg:ml-16 lg:mr-10 mt-20 lg:mt-10">{children}</div>
+        <div className="lg:ml-16 lg:mr-10 mt-20 lg:mt-28">{children}</div>
       </main>
     </main>
   );

@@ -102,6 +102,7 @@ const WishlistSchema = new Schema({
   rating: { type: Number },
   category: { type: String },
   email: { type: String },
+  bookId: {},
 });
 
 const CartsSchema = new mongoose.Schema({

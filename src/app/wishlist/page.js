@@ -26,7 +26,7 @@ const Page = () => {
           `/api/wishlists/${session?.user?.email}`
         );
 
-        setWishListBook(response.data);
+        setWishListBook(response?.data?.data);
         setLoading(false); // Set loading to false after data is fetched
       } catch (error) {
         console.error("Error fetching wishlist:", error);
@@ -57,25 +57,21 @@ const Page = () => {
 
     if (result.isConfirmed) {
       try {
-        // Make the DELETE request to your API
         await axios.delete(`/api/wishlist?id=${id}`);
+        const updatedCart = wishListBook?.filter((item) => item._id !== id);
+        setWishListBook(updatedCart);
 
-        // Remove the item from the local state
-        const updatedWishList = wishListBook.filter((item) => item._id !== id);
-        setWishListBook({ wishList: updatedWishList });
-
-        // Show success message
         Swal.fire({
           title: "Deleted!",
-          text: "Your item has been removed from the wishlist.",
+          text: "Your item has been removed from the cart.",
           icon: "success",
         });
       } catch (error) {
-        console.error("Error removing item from wishlist:", error);
+        console.error("Error removing item from cart:", error);
         Swal.fire({
           icon: "error",
           title: "Error",
-          text: "Failed to remove item from wishlist!",
+          text: "Failed to remove item from cart!",
         });
       }
     }
@@ -84,6 +80,8 @@ const Page = () => {
   if (loading) {
     return <Loading />; // Display a loading message while fetching data
   }
+
+  console.log(wishListBook);
 
   return (
     <>
@@ -96,7 +94,7 @@ const Page = () => {
         <div className="mb-3">
           <div className="font-sans bg-white max-w-6xl mx-auto p-4">
             <h2 className="text-3xl font-bold text-gray-800">
-              Your Wishlist ({wishListBook?.length})
+              Your Wishlist ({wishListBook?.data?.length})
             </h2>
             <div className="overflow-x-auto">
               <table className="mt-12 w-full border-collapse divide-y">
@@ -121,7 +119,7 @@ const Page = () => {
                 </thead>
                 <tbody className="whitespace-nowrap divide-y">
                   {wishListBook?.length > 0 ? (
-                    wishListBook.map((c) => (
+                    wishListBook?.map((c) => (
                       <tr key={c._id} className="hover:bg-gray-100 transition">
                         <td className="px-2 py-4">
                           <div className="flex items-center gap-4 w-max">

@@ -136,7 +136,7 @@ const Navbar = () => {
         <div className="lg:absolute lg:right-0 lg:flex items-center gap-8 hidden">
           <Link href="/wishlist">
             <span className="relative">
-              <FaHeart className="text-[27px] text-black cursor-pointer fill-[#333] hover:fill-[#F65D4E] inline-block" />
+              <FaHeart className="text-[30px] text-black cursor-pointer fill-[#333] hover:fill-[#F65D4E] inline-block" />
               {wishlistCount > 0 && (
                 <span className="absolute left-auto -ml-1 top-0 rounded-full bg-black px-1 py-0 text-xs text-white">
                   {wishlistCount}
@@ -146,7 +146,7 @@ const Navbar = () => {
           </Link>
           <Link href="/checkout">
             <span className="relative">
-              <FaShoppingCart className="text-[27px] text-black cursor-pointer fill-[#333] hover:fill-[#F65D4E] inline-block" />
+              <FaShoppingCart className="text-[30px] text-black cursor-pointer fill-[#333] hover:fill-[#F65D4E] inline-block" />
               {cartCount > 0 && (
                 <span className="absolute left-auto -ml-1 top-0 rounded-full bg-black px-1 py-0 text-xs text-white">
                   {cartCount}
@@ -160,7 +160,7 @@ const Navbar = () => {
                 <MdAccountCircle className="text-3xl cursor-pointer fill-[#333] hover:fill-[#F65D4E] inline-block" />
               </Link>
             ) : (
-              <div className="relative ml-4">
+              <div className="relative ml-3">
                 <button className="text-xl" onClick={toggleDropdown}>
                   { userProfile?.image || userProfile?.photo ? (
                     <Image
@@ -168,7 +168,7 @@ const Navbar = () => {
                       alt="User Image"
                       width={40}
                       height={40}
-                      className="rounded-full"
+                      className="rounded-full h-10 w-10 object-cover"
                     />
                   ) : (
                     <MdAccountCircle className="text-3xl cursor-pointer fill-[#333] hover:fill-[#F65D4E] inline-block" />
@@ -262,7 +262,7 @@ const Navbar = () => {
                         alt="User Image"
                         width={40}
                         height={40}
-                        className="rounded-full"
+                        className="rounded-full h-12 w-12 object-cover"
                       />
                     ) : (
                       <MdAccountCircle className="text-3xl cursor-pointer fill-[#333] hover:fill-[#F65D4E] inline-block" />

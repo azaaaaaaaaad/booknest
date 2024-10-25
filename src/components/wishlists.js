@@ -114,7 +114,7 @@ export default function Wishlist() {
       </table>
       <div className="flex justify-between items-center mt-4">
         <button
-          className="btn btn-primary"
+          className="btn rounded-3xl bg-[#F65D4E] text-white px-8"
           onClick={handlePreviousPage}
           disabled={page === 1}
         >
@@ -124,7 +124,7 @@ export default function Wishlist() {
           Page {page} of {totalPages}
         </span>
         <button
-          className="btn btn-primary"
+          className="btn rounded-3xl bg-[#F65D4E] text-white px-8"
           onClick={handleNextPage}
           disabled={page === totalPages}
         >

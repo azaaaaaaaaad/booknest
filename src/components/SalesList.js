@@ -89,11 +89,18 @@ export default function SalesList() {
                 <td className="px-4 py-4 text-sm text-gray-800">
                   {new Date(pay.date).toLocaleDateString("en-GB")}
                 </td>
+                <td className="px-4 py-4 text-sm text-gray-800"> {pay.transactionId}</td>
+
+                <td className="px-4 py-4 text-sm text-gray-800 text-right">
+                  $
+                  {typeof pay.totalAmount === 'number' ? pay.totalAmount.toFixed(2) :
+         pay.totalAmount}
+                </td>
                 <td className="px-4 py-4 text-sm text-gray-800">
-                  {pay.transactionId}
+                  {pay?.transactionId}
                 </td>
                 <td className="px-4 py-4 text-sm text-gray-800 text-start">
-                ${typeof pay?.totalAmount === 'number' ? pay.totalAmount.toFixed(4) : '0.0000'}
+                ${typeof pay?.totalAmount === 'number' ? pay?.totalAmount.toFixed(2) : pay?.totalAmount}
 
                 </td>
                 <td className="px-4 py-4 text-sm text-gray-800">{pay.status}</td>
@@ -101,6 +108,7 @@ export default function SalesList() {
             ))}
         </tbody>
       </table>
+      
       <div className="flex justify-between items-center mt-4">
         <button
           className="btn bg-[#F65D4E]"

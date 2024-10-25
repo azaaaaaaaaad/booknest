@@ -22,8 +22,8 @@ export default function Cart() {
           { cache: "no-store" }
         );
 
-        console.log("---------", response?.data?.data);
-        // setCarts(response);
+        // console.log("---------", response?.data?.data);
+        setCarts(response?.data?.data);
         setTotalPages(response.data.totalPages);
       } catch (error) {
         console.error("Failed to fetch users:", error);

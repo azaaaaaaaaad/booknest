@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import ReactApexChart from "react-apexcharts";
-import DefaultSelectOption from "./DefaultSelectOption";
+// import DefaultSelectOption from "./DefaultSelectOption";
 
 const BarCharts = () => {
   const [totalSalesData, setTotalSalesData] = useState(Array(12).fill(0));
@@ -126,15 +126,15 @@ const BarCharts = () => {
         <h4 className="text-body-2xlg font-bold text-dark dark:text-white">
           Payments Overview
         </h4>
-        {/* <div className="flex items-center gap-2.5">
-          <p className="font-medium uppercase text-dark dark:text-dark-6">
+        <div className="flex items-center gap-2.5">
+          {/* <p className="font-medium uppercase text-dark dark:text-dark-6">
             Short by:
-          </p>
-          <DefaultSelectOption
+          </p> */}
+          {/* <DefaultSelectOption
             options={["Monthly", "Yearly"]}
             onChange={handlePeriodChange}
-          />
-        </div> */}
+          /> */}
+        </div>
       </div>
       <div>
         <div className="-ml-4 -mr-5">
